@@ -1,4 +1,7 @@
+//* EXPRESS //
 import { Router } from "express";
+
+//* PRODUCT CONTROLLERS //
 import {
   createProduct,
   deleteProduct,
@@ -7,6 +10,7 @@ import {
   updateProduct,
 } from "./prodController";
 
+//* ROUTERS //
 const router = Router();
 
 router.get("/", listProducts);

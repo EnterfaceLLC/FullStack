@@ -1,3 +1,4 @@
+//* DRIZZLE //
 import {
   doublePrecision,
   integer,
@@ -6,6 +7,7 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 
+//* SCHEMAS //
 export const productsTable = pgTable("products", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   name: varchar({ length: 255 }).notNull(),

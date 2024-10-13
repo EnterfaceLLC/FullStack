@@ -1,6 +1,10 @@
+//* EXPRESS //
 import express, { json, urlencoded } from "express";
+
+//* PRODUCT ROUTES //
 import productRoutes from "./routes/products/index";
 
+//* MAIN //
 const port = 3000;
 const app = express();
 
