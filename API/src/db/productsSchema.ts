@@ -7,6 +7,9 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 
+//* DRIZZLE ZOD //
+import { createInsertSchema } from "drizzle-zod";
+
 //* SCHEMAS //
 export const productsTable = pgTable("products", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -15,3 +18,13 @@ export const productsTable = pgTable("products", {
   description: text(),
   image: varchar({ length: 255 }),
 });
+
+export const createProdSchema = createInsertSchema(productsTable).omit({
+  id: true,
+});
+
+export const updateProdSchema = createInsertSchema(productsTable)
+  .omit({
+    id: true,
+  })
+  .partial();

@@ -1,6 +1,9 @@
 //* EXPRESS //
 import { Router } from "express";
 
+//* MIDDLEWARE //
+import { validateData } from "../../middlewares/validationMiddleware";
+
 //* PRODUCT CONTROLLERS //
 import {
   createProduct,
@@ -10,6 +13,9 @@ import {
   updateProduct,
 } from "./prodController";
 
+//* CREATE PROD SCHEMA DRIZZLE //
+import { createProdSchema, updateProdSchema } from "../../db/productsSchema";
+
 //* ROUTERS //
 const router = Router();
 
@@ -17,9 +23,9 @@ router.get("/", listProducts);
 
 router.get("/:id", getProductById);
 
-router.post("/", createProduct);
+router.post("/", validateData(createProdSchema), createProduct);
 
-router.put("/:id", updateProduct);
+router.put("/:id", validateData(updateProdSchema), updateProduct);
 
 router.delete("/:id", deleteProduct);
 
