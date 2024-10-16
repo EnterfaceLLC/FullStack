@@ -8,6 +8,20 @@
       "when": 1728874377028,
       "tag": "0000_chubby_stick",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1729103404476,
+      "tag": "0001_ambitious_nightmare",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1729103766502,
+      "tag": "0002_freezing_shape",
+      "breakpoints": true
     }
   ]
 }
