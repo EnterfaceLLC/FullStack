@@ -2,8 +2,8 @@
 import { Router } from "express";
 
 //* MIDDLEWARE //
-import { validateData } from "../../middlewares/validationMiddleware";
-import { verifySeller, verifyToken } from "../../middlewares/authMiddleware";
+import { validateData } from "../../middlewares/validationMiddleware.js";
+import { verifySeller, verifyToken } from "../../middlewares/authMiddleware.js";
 
 //* PRODUCT CONTROLLERS //
 import {
@@ -12,10 +12,10 @@ import {
   getProductById,
   listProducts,
   updateProduct,
-} from "./prodController";
+} from "./prodController.js";
 
 //* CREATE PROD SCHEMA DRIZZLE //
-import { createProdSchema, updateProdSchema } from "../../db/productsSchema";
+import { createProdSchema, updateProdSchema } from "../../db/productsSchema.js";
 
 //* ROUTERS //
 const router = Router();

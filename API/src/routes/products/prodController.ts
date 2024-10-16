@@ -1,6 +1,6 @@
 //* DATABASE //
-import { productsTable } from "../../db/productsSchema";
-import { db } from "../../db/index";
+import { productsTable } from "../../db/productsSchema.js";
+import { db } from "../../db/index.js";
 
 //* DRIZZLE //
 import { eq } from "drizzle-orm";

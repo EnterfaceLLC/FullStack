@@ -2,10 +2,10 @@
 import express, { json, urlencoded } from "express";
 
 //* PRODUCT ROUTES //
-import productRoutes from "./routes/products/index";
+import productRoutes from "./routes/products/index.js";
 
 //* AUTH ROUTES //
-import authRoutes from "./routes/auth/index";
+import authRoutes from "./routes/auth/index.js";
 
 //* MAIN //
 const port = 3000;

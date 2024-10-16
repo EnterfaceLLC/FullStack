@@ -2,17 +2,17 @@
 import { Router } from "express";
 
 //* MIDDLEWARE //
-import { validateData } from "../../middlewares/validationMiddleware";
+import { validateData } from "../../middlewares/validationMiddleware.js";
 
 //* DATABASE //
-import { db } from "../../db/index";
+import { db } from "../../db/index.js";
 
 //* CREATE USER SCHEMA //
 import {
   createUserSchema,
   loginUserSchema,
   usersTable,
-} from "../../db/usersSchema";
+} from "../../db/usersSchema.js";
 
 //* BCRYPT //
 import bcrypt from "bcryptjs";
