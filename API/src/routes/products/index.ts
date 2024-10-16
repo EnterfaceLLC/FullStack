@@ -3,6 +3,7 @@ import { Router } from "express";
 
 //* MIDDLEWARE //
 import { validateData } from "../../middlewares/validationMiddleware";
+import { verifySeller, verifyToken } from "../../middlewares/authMiddleware";
 
 //* PRODUCT CONTROLLERS //
 import {
@@ -23,10 +24,22 @@ router.get("/", listProducts);
 
 router.get("/:id", getProductById);
 
-router.post("/", validateData(createProdSchema), createProduct);
+router.post(
+  "/",
+  verifyToken,
+  verifySeller,
+  validateData(createProdSchema),
+  createProduct
+);
 
-router.put("/:id", validateData(updateProdSchema), updateProduct);
+router.put(
+  "/:id",
+  verifyToken,
+  verifySeller,
+  validateData(updateProdSchema),
+  updateProduct
+);
 
-router.delete("/:id", deleteProduct);
+router.delete("/:id", verifyToken, verifySeller, deleteProduct);
 
 export default router;

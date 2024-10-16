@@ -4,6 +4,9 @@ import express, { json, urlencoded } from "express";
 //* PRODUCT ROUTES //
 import productRoutes from "./routes/products/index";
 
+//* AUTH ROUTES //
+import authRoutes from "./routes/auth/index";
+
 //* MAIN //
 const port = 3000;
 const app = express();
@@ -16,6 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/products", productRoutes);
+app.use("/auth", authRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
