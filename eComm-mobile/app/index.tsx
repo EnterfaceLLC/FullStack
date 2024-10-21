@@ -1,12 +1,19 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+//* REACT NATIVE//
+import { FlatList, StyleSheet, Text, View } from "react-native";
 
-export default function App() {
+//* MOCK DATA//
+import products from "../assets/data/products.json";
+
+//* COMPONENT//
+import ProductList from "../components/productList";
+
+//* HOME SCREEN//
+export default function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <Text>.Enterface LLC</Text>
-      <StatusBar style="auto" />
-    </View>
+    <FlatList
+      data={products}
+      renderItem={({ item }) => <ProductList product={item} />}
+    />
   );
 }
 
