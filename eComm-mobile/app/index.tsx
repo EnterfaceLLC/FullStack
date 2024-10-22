@@ -1,24 +1,22 @@
 //* REACT NATIVE//
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 
 //* MOCK DATA//
 import products from "../assets/data/products.json";
 
 //* COMPONENT//
 import ProductList from "../components/productList";
-import { Button, ButtonText } from "@/components/ui/button";
 
 //* HOME SCREEN//
 export default function HomeScreen() {
   return (
-    // <FlatList
-    //   data={products}
-    //   renderItem={({ item }) => <ProductList product={item} />}
-    // />
-
-    <Button>
-      <ButtonText>Press Me</ButtonText>
-    </Button>
+    <FlatList
+      data={products}
+      numColumns={2}
+      contentContainerClassName="gap-2"
+      columnWrapperClassName="gap-2"
+      renderItem={({ item }) => <ProductList product={item} />}
+    />
   );
 }
 
