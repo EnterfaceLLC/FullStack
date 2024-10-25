@@ -1,3 +1,6 @@
+//* REACT NATIVE//
+import { ActivityIndicator } from "react-native";
+
 //* EXPO ROUTER//
 import { Stack, useLocalSearchParams } from "expo-router";
 
@@ -10,17 +13,36 @@ import { Text } from "@/components/ui/text";
 import { Box } from "@/components/ui/box";
 import { Button, ButtonText } from "@/components/ui/button";
 
+//* TANSTACK//
+import { useQuery } from "@tanstack/react-query";
+
+//* API//
+import { fetchProductById } from "@/api/products";
+
 //* MOCK DATA//
-import products from "@/assets/data/products.json";
+// import products from "@/assets/data/products.json";
 
 //* DETAILS SCREEN//
 export default function DetailScreen() {
   const { id } = useLocalSearchParams();
 
-  const product = products.find((p) => p.id === Number(id));
+  const {
+    data: product,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["products", id],
+    queryFn: () => fetchProductById(Number(id)),
+  });
 
-  if (!product) {
-    return <Text>Product Not Found!</Text>;
+  // const product = products.find((p) => p.id === Number(id));
+
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
+
+  if (error) {
+    return <Text>Fetching Error!</Text>;
   }
 
   return (
