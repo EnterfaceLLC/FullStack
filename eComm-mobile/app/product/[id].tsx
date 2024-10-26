@@ -16,6 +16,9 @@ import { Button, ButtonText } from "@/components/ui/button";
 //* TANSTACK//
 import { useQuery } from "@tanstack/react-query";
 
+//* ZUSTAND//
+import { useCart } from "@/store/cartStore";
+
 //* API//
 import { fetchProductById } from "@/api/products";
 
@@ -26,6 +29,8 @@ import { fetchProductById } from "@/api/products";
 export default function DetailScreen() {
   const { id } = useLocalSearchParams();
 
+  const addProduct = useCart((state) => state.addProduct);
+
   const {
     data: product,
     isLoading,
@@ -34,6 +39,10 @@ export default function DetailScreen() {
     queryKey: ["products", id],
     queryFn: () => fetchProductById(Number(id)),
   });
+
+  const addToCart = () => {
+    addProduct(product);
+  };
 
   // const product = products.find((p) => p.id === Number(id));
 
@@ -68,7 +77,10 @@ export default function DetailScreen() {
           <Text size="sm">{product.description}</Text>
         </VStack>
         <Box className="flex-col sm:flex-row">
-          <Button className="px-4 py-2 mr-0 mb-3 sm:mr-3 sm:mb-0 sm:flex-1">
+          <Button
+            onPress={addToCart}
+            className="px-4 py-2 mr-0 mb-3 sm:mr-3 sm:mb-0 sm:flex-1"
+          >
             <ButtonText size="sm">Add to cart</ButtonText>
           </Button>
           <Button
