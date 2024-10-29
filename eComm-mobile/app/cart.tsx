@@ -6,6 +6,10 @@ import { Redirect } from "expo-router";
 
 //* ZUSTAND//
 import { useCart } from "@/store/cartStore";
+import { createOrder } from "@/api/orders";
+
+//* TANSTACK//
+import { useMutation } from "@tanstack/react-query";
 
 //* GLUESTACK//
 import { HStack } from "@/components/ui/hstack";
@@ -19,9 +23,27 @@ export default function CartScreen() {
 
   console.log(items);
 
+  const createOrderMutation = useMutation({
+    mutationFn: () =>
+      createOrder(
+        items.map((item) => ({
+          productId: item.product.id,
+          quantity: item.quantity,
+          price: item.product.price,
+        }))
+      ),
+
+    onSuccess: (data) => {
+      console.log("Order Success!", data);
+      reset();
+    },
+
+    onError: (error) => console.log("Error:", error),
+  });
+
   const onCheckout = async () => {
     //* Send Order to Server//
-    reset();
+    createOrderMutation.mutate();
   };
 
   if (items.length === 0) {
