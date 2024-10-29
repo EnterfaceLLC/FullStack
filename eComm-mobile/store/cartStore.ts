@@ -1,5 +1,7 @@
+//*  ZUSTAND//
 import { create } from "zustand";
 
+//* CART STATE//
 export const useCart = create((set) => ({
   items: [],
 

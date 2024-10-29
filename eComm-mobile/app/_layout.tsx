@@ -7,6 +7,9 @@ import { Link, Stack } from "expo-router";
 import "@/global.css";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 
+//* ZUSTAND//
+import { useAuth } from "@/store/authStore";
+
 //*GLUESTACK//
 import { Icon } from "@/components/ui/icon";
 
@@ -23,6 +26,8 @@ const queryClient = new QueryClient();
 export default function RootLayout() {
   const cartLength = useCart((state) => state.items.length);
 
+  const isLoggedIn = useAuth((s) => !!s.token);
+
   return (
     <QueryClientProvider client={queryClient}>
       <GluestackUIProvider mode="light">
@@ -37,16 +42,22 @@ export default function RootLayout() {
                   </Pressable>
                 </Link>
               ),
-            headerLeft: () => (
-              <Link href={"/login"} asChild>
-                <Pressable className="flex-row gap-2">
-                  <Icon as={User} />
-                </Pressable>
-              </Link>
-            ),
           }}
         >
-          <Stack.Screen name="index" options={{ title: "Shop" }} />
+          <Stack.Screen
+            name="index"
+            options={{
+              title: "Shop",
+              headerLeft: () =>
+                !isLoggedIn && (
+                  <Link href={"/login"} asChild>
+                    <Pressable className="flex-row gap-2">
+                      <Icon as={User} />
+                    </Pressable>
+                  </Link>
+                ),
+            }}
+          />
         </Stack>
       </GluestackUIProvider>
     </QueryClientProvider>
