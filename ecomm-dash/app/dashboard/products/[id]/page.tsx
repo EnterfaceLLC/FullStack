@@ -1,6 +1,10 @@
+//* API FN//
 import { fetchProductById } from "@/api/products";
+
+//* COMPONENT//
 import ProductList from "../productListItem";
 
+//* PRODUCT DETAILS PAGE//
 export default async function ProductDetails({
   params: { id },
 }: {
@@ -10,7 +14,7 @@ export default async function ProductDetails({
   const product = await fetchProductById(Number(id));
 
   return (
-    <div className="max-w-[1200px] w-full mx-auto">
+    <div className="max-w-screen-lg w-full mx-auto">
       <ProductList product={product} />
     </div>
   );

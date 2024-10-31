@@ -1,6 +1,10 @@
+//* API FN//
 import { listProducts } from "@/api/products";
+
+//* COMPONENT//
 import ProductList from "./productListItem";
 
+//* PRODUCTS PAGE//
 export default async function ProductsPage() {
   const products = await listProducts();
   console.log("Server Connected", products);
