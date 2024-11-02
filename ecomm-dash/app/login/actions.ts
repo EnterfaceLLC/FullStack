@@ -7,6 +7,7 @@ import { login, signup } from "@/api/auth";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
+//* ACTION FN//
 export async function handleLogin(email: string, password: string) {
   let redirectURL = `/login?errorMessage=${encodeURIComponent(
     "Failed to login"
