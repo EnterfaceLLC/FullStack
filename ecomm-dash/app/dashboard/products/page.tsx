@@ -17,9 +17,12 @@ export default async function ProductsPage() {
   console.log("Server Connected", products);
 
   return (
-    <div className="flex flex-row flex-wrap gap-4 max-w-[1200px] w-full mx-auto">
-      <Link href={"/dashboard/products/create"}>
-        <Card className="w-full h-full min-w-[300px] flex items-center justify-center bg-teal-900">
+    <div className="flex flex-row flex-wrap gap-4 max-w-[1200px] w-full">
+      <Link
+        href={"/dashboard/products/create"}
+        className="flex flex-1 min-w-[300px]"
+      >
+        <Card className="w-full h-full min-w-[300px] flex items-center justify-center bg-gray-700">
           <Icon as={AddIcon} className="w-10 h-10 color-slate-50" />
         </Card>
       </Link>
