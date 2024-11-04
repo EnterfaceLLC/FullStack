@@ -8,7 +8,7 @@ import { Text } from "@/components/ui/text";
 import Link from "next/link";
 
 //* PRODUCT LIST COMPONENT//
-export default function ProductList({ product }) {
+export default function ProductList({ product }: any) {
   return (
     <Link
       href={`/dashboard/products/${product.id}`}

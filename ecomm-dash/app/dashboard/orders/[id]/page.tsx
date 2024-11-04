@@ -34,7 +34,7 @@ export default async function OrdersPage({
       </Box>
 
       <Heading className="mt-5 text-gray-500">Items</Heading>
-      {order?.items.map((orderitem) => (
+      {order?.items.map((orderitem: any) => (
         <HStack key={orderitem.id} className="p-4 gap-4">
           <Text>{orderitem.productId}</Text>
           <Text>

@@ -23,7 +23,7 @@ export default async function OrdersPage() {
         <Text className="ml-auto font-bold">Status</Text>
       </HStack>
 
-      {orders.map((order) => (
+      {orders.map((order: any) => (
         <Link href={`/dashboard/orders/${order.id}`} key={order.id}>
           <HStack className="p-4 border-b border-gray-200 gap-8">
             <Text>{order.id}</Text>
